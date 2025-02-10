@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.johnmur.EducationPlatform.DTO.UserResponseDTO;
 import ru.johnmur.EducationPlatform.model.User;
 import ru.johnmur.EducationPlatform.service.UserService;
 
@@ -21,24 +22,12 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable long id) {
-        return userService.getUserById(id)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.
-                        status(HttpStatus.NOT_FOUND)
-                        .build()
-                );
+    public ResponseEntity<UserResponseDTO> getUserById(@PathVariable long id) {
+        return ResponseEntity.ok(userService.getUserById(id));
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<User>> getAllUsers() {
-        return userService.getAllUsers()
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity
-                        .status(HttpStatus.NOT_FOUND)
-                        .build()
-                );
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
     }
-
-
 }
