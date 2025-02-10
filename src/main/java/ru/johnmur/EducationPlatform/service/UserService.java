@@ -3,9 +3,9 @@ package ru.johnmur.EducationPlatform.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import ru.johnmur.EducationPlatform.DTO.UserMapper;
-import ru.johnmur.EducationPlatform.DTO.UserRequestDTO;
-import ru.johnmur.EducationPlatform.DTO.UserResponseDTO;
+import ru.johnmur.EducationPlatform.DTO.User.UserMapper;
+import ru.johnmur.EducationPlatform.DTO.User.UserRequestDTO;
+import ru.johnmur.EducationPlatform.DTO.User.UserResponseDTO;
 import ru.johnmur.EducationPlatform.model.User;
 import ru.johnmur.EducationPlatform.repository.UserRepository;
 

@@ -2,12 +2,9 @@ package ru.johnmur.EducationPlatform.RestController.v1;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import ru.johnmur.EducationPlatform.DTO.UserResponseDTO;
-import ru.johnmur.EducationPlatform.model.User;
+import org.springframework.web.bind.annotation.*;
+import ru.johnmur.EducationPlatform.DTO.User.UserRequestDTO;
+import ru.johnmur.EducationPlatform.DTO.User.UserResponseDTO;
 import ru.johnmur.EducationPlatform.service.UserService;
 
 import java.util.List;
@@ -29,5 +26,10 @@ public class UserController {
     @GetMapping("/all")
     public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
+    }
+
+    @PostMapping
+    public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserRequestDTO userRequestDTO) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(userRequestDTO));
     }
 }

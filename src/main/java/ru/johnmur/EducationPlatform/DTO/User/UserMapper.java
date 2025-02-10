@@ -1,8 +1,7 @@
-package ru.johnmur.EducationPlatform.DTO;
+package ru.johnmur.EducationPlatform.DTO.User;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.springframework.context.annotation.ComponentScan;
 import ru.johnmur.EducationPlatform.model.User;
 
 @Mapper(componentModel = "spring")
