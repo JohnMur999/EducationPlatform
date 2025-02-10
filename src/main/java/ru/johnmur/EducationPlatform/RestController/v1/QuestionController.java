@@ -3,8 +3,8 @@ package ru.johnmur.EducationPlatform.RestController.v1;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.johnmur.EducationPlatform.DTO.Question.QuestionRequestDTO;
-import ru.johnmur.EducationPlatform.DTO.Question.QuestionResponseDTO;
+import ru.johnmur.EducationPlatform.DTO.question.QuestionRequestDTO;
+import ru.johnmur.EducationPlatform.DTO.question.QuestionResponseDTO;
 import ru.johnmur.EducationPlatform.service.QuestionService;
 
 import java.util.List;

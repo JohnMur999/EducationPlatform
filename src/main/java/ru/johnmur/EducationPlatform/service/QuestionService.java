@@ -1,9 +1,9 @@
 package ru.johnmur.EducationPlatform.service;
 
 import org.springframework.stereotype.Service;
-import ru.johnmur.EducationPlatform.DTO.Question.QuestionMapper;
-import ru.johnmur.EducationPlatform.DTO.Question.QuestionRequestDTO;
-import ru.johnmur.EducationPlatform.DTO.Question.QuestionResponseDTO;
+import ru.johnmur.EducationPlatform.DTO.question.QuestionMapper;
+import ru.johnmur.EducationPlatform.DTO.question.QuestionRequestDTO;
+import ru.johnmur.EducationPlatform.DTO.question.QuestionResponseDTO;
 import ru.johnmur.EducationPlatform.model.Question;
 import ru.johnmur.EducationPlatform.repository.QuestionRepository;
 import ru.johnmur.EducationPlatform.repository.UserRepository;

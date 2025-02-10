@@ -1,4 +1,4 @@
-package ru.johnmur.EducationPlatform.DTO.Answer;
+package ru.johnmur.EducationPlatform.DTO.answer;
 
 public class AnswerRequestDTO {
     private Long questionId;

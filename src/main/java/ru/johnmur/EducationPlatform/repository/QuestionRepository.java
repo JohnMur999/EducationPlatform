@@ -3,8 +3,6 @@ package ru.johnmur.EducationPlatform.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.johnmur.EducationPlatform.model.Question;
-
-import java.util.List;
 import java.util.Optional;
 
 @Repository

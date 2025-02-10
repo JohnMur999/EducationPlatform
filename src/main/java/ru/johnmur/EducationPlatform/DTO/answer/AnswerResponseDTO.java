@@ -1,4 +1,4 @@
-package ru.johnmur.EducationPlatform.DTO.Answer;
+package ru.johnmur.EducationPlatform.DTO.answer;
 
 import java.time.LocalDateTime;
 

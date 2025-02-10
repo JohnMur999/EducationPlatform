@@ -1,4 +1,4 @@
-package ru.johnmur.EducationPlatform.Exception;
+package ru.johnmur.EducationPlatform.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,10 +1,10 @@
-package ru.johnmur.EducationPlatform.DTO.Question;
+package ru.johnmur.EducationPlatform.DTO.question;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Context;
-import ru.johnmur.EducationPlatform.DTO.Answer.AnswerMapper;
-import ru.johnmur.EducationPlatform.DTO.User.UserMapperHelper;
+import ru.johnmur.EducationPlatform.DTO.answer.AnswerMapper;
+import ru.johnmur.EducationPlatform.DTO.user.UserMapperHelper;
 import ru.johnmur.EducationPlatform.model.Question;
 import ru.johnmur.EducationPlatform.repository.UserRepository;
 

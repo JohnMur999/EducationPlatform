@@ -1,4 +1,4 @@
-package ru.johnmur.EducationPlatform.DTO.Question;
+package ru.johnmur.EducationPlatform.DTO.question;
 
 public class QuestionRequestDTO {
     private String topic;

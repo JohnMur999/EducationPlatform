@@ -1,12 +1,11 @@
-package ru.johnmur.EducationPlatform.DTO.Answer;
+package ru.johnmur.EducationPlatform.DTO.answer;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Context;
-import ru.johnmur.EducationPlatform.DTO.User.UserMapperHelper;
+import ru.johnmur.EducationPlatform.DTO.user.UserMapperHelper;
 import ru.johnmur.EducationPlatform.model.Answer;
 import ru.johnmur.EducationPlatform.model.Question;
-import ru.johnmur.EducationPlatform.model.User;
 import ru.johnmur.EducationPlatform.repository.UserRepository;
 
 @Mapper(componentModel = "spring", uses = {UserMapperHelper.class})

@@ -1,6 +1,6 @@
-package ru.johnmur.EducationPlatform.DTO.Question;
+package ru.johnmur.EducationPlatform.DTO.question;
 
-import ru.johnmur.EducationPlatform.DTO.Answer.AnswerResponseDTO;
+import ru.johnmur.EducationPlatform.DTO.answer.AnswerResponseDTO;
 import java.time.LocalDateTime;
 import java.util.List;
 

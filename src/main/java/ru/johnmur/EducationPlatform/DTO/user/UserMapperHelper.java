@@ -1,4 +1,4 @@
-package ru.johnmur.EducationPlatform.DTO.User;
+package ru.johnmur.EducationPlatform.DTO.user;
 
 import org.mapstruct.Context;
 import org.mapstruct.Named;

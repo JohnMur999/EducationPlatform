@@ -1,9 +1,9 @@
 package ru.johnmur.EducationPlatform.service;
 
 import org.springframework.stereotype.Service;
-import ru.johnmur.EducationPlatform.DTO.Answer.AnswerMapper;
-import ru.johnmur.EducationPlatform.DTO.Answer.AnswerRequestDTO;
-import ru.johnmur.EducationPlatform.DTO.Answer.AnswerResponseDTO;
+import ru.johnmur.EducationPlatform.DTO.answer.AnswerMapper;
+import ru.johnmur.EducationPlatform.DTO.answer.AnswerRequestDTO;
+import ru.johnmur.EducationPlatform.DTO.answer.AnswerResponseDTO;
 import ru.johnmur.EducationPlatform.model.Answer;
 import ru.johnmur.EducationPlatform.model.Question;
 import ru.johnmur.EducationPlatform.repository.AnswerRepository;

@@ -1,4 +1,4 @@
-package ru.johnmur.EducationPlatform.DTO.User;
+package ru.johnmur.EducationPlatform.DTO.user;
 
 public class UserRequestDTO {
     private long id;

@@ -1,4 +1,4 @@
-package ru.johnmur.EducationPlatform.DTO.User;
+package ru.johnmur.EducationPlatform.DTO.user;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

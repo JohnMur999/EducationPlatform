@@ -1,4 +1,4 @@
-package ru.johnmur.EducationPlatform.DTO.User;
+package ru.johnmur.EducationPlatform.DTO.user;
 
 public class UserResponseDTO {
     private long id;
