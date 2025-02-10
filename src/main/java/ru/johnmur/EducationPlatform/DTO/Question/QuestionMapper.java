@@ -2,31 +2,21 @@ package ru.johnmur.EducationPlatform.DTO.Question;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+import org.mapstruct.Context;
 import ru.johnmur.EducationPlatform.DTO.Answer.AnswerMapper;
+import ru.johnmur.EducationPlatform.DTO.User.UserMapperHelper;
 import ru.johnmur.EducationPlatform.model.Question;
-import ru.johnmur.EducationPlatform.model.User;
 import ru.johnmur.EducationPlatform.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
-@Mapper(componentModel = "spring", uses = {AnswerMapper.class})
-public abstract class QuestionMapper {
-
-    @Autowired
-    private UserRepository userRepository; // Теперь получаем `User` из БД
+@Mapper(componentModel = "spring", uses = {AnswerMapper.class, UserMapperHelper.class})
+public interface QuestionMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "rating", ignore = true)
     @Mapping(target = "author", source = "authorId", qualifiedByName = "mapAuthor")
-    public abstract Question toEntity(QuestionRequestDTO dto);
+    Question toEntity(QuestionRequestDTO dto, @Context UserRepository userRepository);
 
-    @Mapping(target = "authorId", source = "author.id") // Конвертируем `User` → `Long`
-    public abstract QuestionResponseDTO toResponse(Question question);
-
-    @Named("mapAuthor")
-    public User mapAuthor(Long authorId) {
-        return userRepository.findById(authorId)
-                .orElseThrow(() -> new RuntimeException("User with ID " + authorId + " not found"));
-    }
+    @Mapping(target = "authorId", source = "author.id")
+    QuestionResponseDTO toResponse(Question question);
 }

@@ -3,20 +3,22 @@ package ru.johnmur.EducationPlatform.RestController.v1;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.johnmur.EducationPlatform.repository.AnswerRepository;
+import ru.johnmur.EducationPlatform.DTO.Answer.AnswerRequestDTO;
+import ru.johnmur.EducationPlatform.DTO.Answer.AnswerResponseDTO;
 import ru.johnmur.EducationPlatform.service.AnswerService;
 
 @RestController
 @RequestMapping("api/v1/answers")
 public class AnswerController {
-    private static AnswerService answerService;
+    private final AnswerService answerService;
 
-    AnswerController(AnswerService answerService) {
+    public AnswerController(AnswerService answerService) {
         this.answerService = answerService;
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity createAnswer(@RequestBody Long id, String content) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(AnswerService.createAnswer());
+    @PostMapping
+    public ResponseEntity<AnswerResponseDTO> createAnswer(@RequestBody AnswerRequestDTO dto) {
+        AnswerResponseDTO savedAnswer = answerService.save(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedAnswer);
     }
 }

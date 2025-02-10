@@ -18,10 +18,10 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public ResponseEntity<QuestionResponseDTO> getQuestion(@PathVariable Long id) {
         return ResponseEntity.ok(questionService.findById(id));
-    }
+    }*/
 
     @PostMapping
     public ResponseEntity<QuestionResponseDTO> createQuestion(@RequestBody QuestionRequestDTO dto) {

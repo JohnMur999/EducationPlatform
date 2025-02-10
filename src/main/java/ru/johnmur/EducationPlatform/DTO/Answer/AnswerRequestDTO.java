@@ -13,24 +13,24 @@ public class AnswerRequestDTO {
         this.authorId = authorId;
     }
 
+    public String getContent() {
+        return content;
+    }
+
     public Long getQuestionId() {
         return questionId;
+    }
+
+    public Long getAuthorId() {
+        return authorId;
     }
 
     public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
 
-    public String getContent() {
-        return content;
-    }
-
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Long getAuthorId() {
-        return authorId;
     }
 
     public void setAuthorId(Long authorId) {

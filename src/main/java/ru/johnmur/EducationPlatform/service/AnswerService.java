@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.johnmur.EducationPlatform.DTO.Answer.AnswerMapper;
 import ru.johnmur.EducationPlatform.DTO.Answer.AnswerRequestDTO;
 import ru.johnmur.EducationPlatform.DTO.Answer.AnswerResponseDTO;
+import ru.johnmur.EducationPlatform.model.Answer;
 import ru.johnmur.EducationPlatform.model.Question;
 import ru.johnmur.EducationPlatform.repository.AnswerRepository;
 import ru.johnmur.EducationPlatform.repository.QuestionRepository;
@@ -12,19 +13,24 @@ import ru.johnmur.EducationPlatform.repository.UserRepository;
 @Service
 public class AnswerService {
     private final AnswerRepository answerRepository;
-    private final AnswerMapper answerMapper;
-    private final UserRepository userRepository;
     private final QuestionRepository questionRepository;
+    private final UserRepository userRepository;
+    private final AnswerMapper answerMapper;
 
-    AnswerService(AnswerRepository answerRepository, AnswerMapper answerMapper, UserRepository userRepository, QuestionRepository questionRepository) {
+    public AnswerService(AnswerRepository answerRepository, QuestionRepository questionRepository, UserRepository userRepository, AnswerMapper answerMapper) {
         this.answerRepository = answerRepository;
-        this.answerMapper = answerMapper;
-        this.userRepository = userRepository;
         this.questionRepository = questionRepository;
+        this.userRepository = userRepository;
+        this.answerMapper = answerMapper;
     }
 
-    public AnswerResponseDTO save(AnswerRequestDTO answerRequestDTO) {
-        Question question = questionRepository.findById()
-    }
+    public AnswerResponseDTO save(AnswerRequestDTO dto) {
+        Question question = questionRepository.findById(dto.getQuestionId())
+                .orElseThrow(() -> new RuntimeException("Question not found"));
 
+        Answer answer = answerMapper.toEntity(dto, question, userRepository);
+        answer = answerRepository.save(answer);
+
+        return answerMapper.toResponse(answer);
+    }
 }
