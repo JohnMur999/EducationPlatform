@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "questions")
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,17 +14,18 @@ public class Question {
     @Column(nullable = false)
     private String topic;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String title;
 
-    @Column(unique=true)
+    @Column(nullable = false)
     private String body;
 
-    private Long rating;
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
+    private Integer rating = 0;
 
     @Column(nullable = false)
     private String author;
 
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
 }
