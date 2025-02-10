@@ -4,16 +4,18 @@ import java.time.LocalDateTime;
 
 public class AnswerResponseDTO {
     private Long id;
+    private Long questionId;
     private String content;
-    private String author;
+    private Long authorId;
     private LocalDateTime createdAt;
 
     public AnswerResponseDTO() {}
 
-    public AnswerResponseDTO(Long id, String content, String author, LocalDateTime createdAt) {
+    public AnswerResponseDTO(Long id, Long questionId, String content, Long authorId, LocalDateTime createdAt) {
         this.id = id;
+        this.questionId = questionId;
         this.content = content;
-        this.author = author;
+        this.authorId = authorId;
         this.createdAt = createdAt;
     }
 
@@ -21,16 +23,19 @@ public class AnswerResponseDTO {
         return id;
     }
 
+    public Long getQuestionId() {
+        return questionId;
+    }
+
     public String getContent() {
         return content;
     }
 
-    public String getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 }
-

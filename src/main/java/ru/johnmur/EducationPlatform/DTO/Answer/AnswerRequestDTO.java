@@ -3,14 +3,14 @@ package ru.johnmur.EducationPlatform.DTO.Answer;
 public class AnswerRequestDTO {
     private Long questionId;
     private String content;
-    private String author;
+    private Long authorId; // Теперь это ID пользователя
 
     public AnswerRequestDTO() {}
 
-    public AnswerRequestDTO(Long questionId, String content, String author) {
+    public AnswerRequestDTO(Long questionId, String content, Long authorId) {
         this.questionId = questionId;
         this.content = content;
-        this.author = author;
+        this.authorId = authorId;
     }
 
     public Long getQuestionId() {
@@ -29,12 +29,11 @@ public class AnswerRequestDTO {
         this.content = content;
     }
 
-    public String getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 }
-

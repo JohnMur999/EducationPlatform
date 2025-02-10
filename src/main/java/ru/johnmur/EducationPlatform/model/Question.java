@@ -23,15 +23,16 @@ public class Question {
     @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
     private Integer rating = 0;
 
-    @Column(nullable = false)
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    private User author;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public Question() {}
 
-    public Question(Long id, String topic, String title, String body, Integer rating, String author, LocalDateTime createdAt) {
+    public Question(Long id, String topic, String title, String body, Integer rating, User author, LocalDateTime createdAt) {
         this.id = id;
         this.topic = topic;
         this.title = title;
@@ -61,7 +62,7 @@ public class Question {
         return rating;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
@@ -89,7 +90,7 @@ public class Question {
         this.rating = rating;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 

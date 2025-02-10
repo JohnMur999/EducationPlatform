@@ -1,7 +1,6 @@
 package ru.johnmur.EducationPlatform.model;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,23 +14,23 @@ public class Answer {
     @JoinColumn(name = "question_id", nullable = false)
     private Question question;
 
-    @Column(nullable = false)
-    private String content;
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false) // Теперь у ответа есть автор
+    private User author;
 
     @Column(nullable = false)
-    private String author;
+    private String content;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public Answer() {}
 
-    public Answer(Long id, Question question, String content, String author, LocalDateTime createdAt) {
-        this.id = id;
+    public Answer(Question question, User author, String content) {
         this.question = question;
-        this.content = content;
         this.author = author;
-        this.createdAt = createdAt;
+        this.content = content;
+        this.createdAt = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -42,12 +41,12 @@ public class Answer {
         return question;
     }
 
-    public String getContent() {
-        return content;
+    public User getAuthor() {
+        return author;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getContent() {
+        return content;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -62,12 +61,12 @@ public class Answer {
         this.question = question;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public void setCreatedAt(LocalDateTime createdAt) {

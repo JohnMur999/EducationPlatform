@@ -4,15 +4,15 @@ public class QuestionRequestDTO {
     private String topic;
     private String title;
     private String body;
-    private String author;
+    private Long authorId;
 
     public QuestionRequestDTO() {}
 
-    public QuestionRequestDTO(String topic, String title, String body, String author) {
+    public QuestionRequestDTO(String topic, String title, String body, Long authorId) {
         this.topic = topic;
         this.title = title;
         this.body = body;
-        this.author = author;
+        this.authorId = authorId;
     }
 
     public String getTopic() {
@@ -39,12 +39,12 @@ public class QuestionRequestDTO {
         this.body = body;
     }
 
-    public String getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 }
 

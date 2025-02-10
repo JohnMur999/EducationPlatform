@@ -1,7 +1,6 @@
 package ru.johnmur.EducationPlatform.DTO.Question;
 
 import ru.johnmur.EducationPlatform.DTO.Answer.AnswerResponseDTO;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,21 +10,21 @@ public class QuestionResponseDTO {
     private String title;
     private String body;
     private Integer rating;
-    private String author;
+    private Long authorId; // Теперь автор - это ID пользователя
     private LocalDateTime createdAt;
-    private List<AnswerResponseDTO> answers;
+    private List<AnswerResponseDTO> answers = List.of(); // Предотвращаем NPE
 
     public QuestionResponseDTO() {}
 
-    public QuestionResponseDTO(Long id, String topic, String title, String body, Integer rating, String author, LocalDateTime createdAt, List<AnswerResponseDTO> answers) {
+    public QuestionResponseDTO(Long id, String topic, String title, String body, Integer rating, Long authorId, LocalDateTime createdAt, List<AnswerResponseDTO> answers) {
         this.id = id;
         this.topic = topic;
         this.title = title;
         this.body = body;
         this.rating = rating;
-        this.author = author;
+        this.authorId = authorId;
         this.createdAt = createdAt;
-        this.answers = answers;
+        this.answers = answers != null ? answers : List.of(); // Безопасная инициализация
     }
 
     public Long getId() {
@@ -48,8 +47,12 @@ public class QuestionResponseDTO {
         return rating;
     }
 
-    public String getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Long authorId) { // Добавляем сеттер для MapStruct
+        this.authorId = authorId;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -60,4 +63,3 @@ public class QuestionResponseDTO {
         return answers;
     }
 }
-
