@@ -11,7 +11,7 @@ public interface AnswerMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "author", source = "authorId", qualifiedByName = "mapAuthor")
-    @Mapping(target = "question", source = "questionId", qualifiedByName = "mapQuestion") // Загружаем вопрос по ID
+    @Mapping(target = "question", source = "questionId", qualifiedByName = "mapQuestion")
     Answer toEntity(AnswerRequestDTO dto);
 
     @Mapping(target = "authorId", source = "author.id")
