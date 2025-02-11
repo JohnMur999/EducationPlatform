@@ -6,35 +6,29 @@ import ru.johnmur.EducationPlatform.DTO.question.QuestionRequestDTO;
 import ru.johnmur.EducationPlatform.DTO.question.QuestionResponseDTO;
 import ru.johnmur.EducationPlatform.model.Question;
 import ru.johnmur.EducationPlatform.repository.QuestionRepository;
-import ru.johnmur.EducationPlatform.repository.UserRepository;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {
     private final QuestionRepository questionRepository;
-    private final UserRepository userRepository;
     private final QuestionMapper questionMapper;
 
-    public QuestionService(QuestionRepository questionRepository, UserRepository userRepository, QuestionMapper questionMapper) {
+    public QuestionService(QuestionRepository questionRepository, QuestionMapper questionMapper) {
         this.questionRepository = questionRepository;
-        this.userRepository = userRepository;
         this.questionMapper = questionMapper;
     }
 
     public QuestionResponseDTO save(QuestionRequestDTO dto) {
-        Question question = questionMapper.toEntity(dto, userRepository);
+        Question question = questionMapper.toEntity(dto);
         question = questionRepository.save(question);
         return questionMapper.toResponse(question);
     }
 
     public List<QuestionResponseDTO> findAll() {
-        List<Question> questions = questionRepository.findAll();
-        List<QuestionResponseDTO> questionResponseDTOs = new ArrayList<QuestionResponseDTO>();
-        for (Question question : questions) {
-            questionResponseDTOs.add(questionMapper.toResponse(question));
-        }
-        return questionResponseDTOs;
+        return questionRepository.findAll().stream()
+                .map(questionMapper::toResponse)
+                .collect(Collectors.toList());
     }
 }

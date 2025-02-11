@@ -10,6 +10,8 @@ import ru.johnmur.EducationPlatform.repository.AnswerRepository;
 import ru.johnmur.EducationPlatform.repository.QuestionRepository;
 import ru.johnmur.EducationPlatform.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 public class AnswerService {
     private final AnswerRepository answerRepository;
@@ -25,12 +27,20 @@ public class AnswerService {
     }
 
     public AnswerResponseDTO save(AnswerRequestDTO dto) {
-        Question question = questionRepository.findById(dto.getQuestionId())
-                .orElseThrow(() -> new RuntimeException("Question not found"));
-
-        Answer answer = answerMapper.toEntity(dto, question, userRepository);
+        Answer answer = answerMapper.toEntity(dto);
         answer = answerRepository.save(answer);
-
         return answerMapper.toResponse(answer);
     }
+
+    public AnswerResponseDTO findById(Long id) {
+        Answer answer = answerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Answer not found with id: " + id));
+        return answerMapper.toResponse(answer);
+    }
+
+    public List<AnswerResponseDTO> findByQuestionId(Long questionId) {
+        List<Answer> answers = answerRepository.findByQuestionId(questionId);
+        return answers.stream().map(answerMapper::toResponse).toList();
+    }
+
 }

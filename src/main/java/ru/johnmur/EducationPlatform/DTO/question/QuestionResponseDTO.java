@@ -1,6 +1,7 @@
 package ru.johnmur.EducationPlatform.DTO.question;
 
 import ru.johnmur.EducationPlatform.DTO.answer.AnswerResponseDTO;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -10,56 +11,32 @@ public class QuestionResponseDTO {
     private String title;
     private String body;
     private Integer rating;
-    private Long authorId; // Теперь автор - это ID пользователя
+    private Long authorId;
     private LocalDateTime createdAt;
-    private List<AnswerResponseDTO> answers = List.of(); // Предотвращаем NPE
+    private List<AnswerResponseDTO> answers;
 
-    public QuestionResponseDTO() {}
+    // Геттеры и сеттеры
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public QuestionResponseDTO(Long id, String topic, String title, String body, Integer rating, Long authorId, LocalDateTime createdAt, List<AnswerResponseDTO> answers) {
-        this.id = id;
-        this.topic = topic;
-        this.title = title;
-        this.body = body;
-        this.rating = rating;
-        this.authorId = authorId;
-        this.createdAt = createdAt;
-        this.answers = answers != null ? answers : List.of(); // Безопасная инициализация
-    }
+    public String getTopic() { return topic; }
+    public void setTopic(String topic) { this.topic = topic; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-    public String getTopic() {
-        return topic;
-    }
+    public String getBody() { return body; }
+    public void setBody(String body) { this.body = body; }
 
-    public String getTitle() {
-        return title;
-    }
+    public Integer getRating() { return rating; }
+    public void setRating(Integer rating) { this.rating = rating; }
 
-    public String getBody() {
-        return body;
-    }
+    public Long getAuthorId() { return authorId; }
+    public void setAuthorId(Long authorId) { this.authorId = authorId; }
 
-    public Integer getRating() {
-        return rating;
-    }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
-    public Long getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(Long authorId) { // Добавляем сеттер для MapStruct
-        this.authorId = authorId;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public List<AnswerResponseDTO> getAnswers() {
-        return answers;
-    }
+    public List<AnswerResponseDTO> getAnswers() { return answers; }
+    public void setAnswers(List<AnswerResponseDTO> answers) { this.answers = answers; }
 }
